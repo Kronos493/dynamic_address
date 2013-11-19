@@ -12,4 +12,8 @@ class AddressGenerator < Rails::Generators::Base
   def create_migration_addresses
     migration_template "create_addresses.rb", "db/migrate/create_addresses.rb"
   end
+
+  def create_migration_postal_codes
+    migration_template "create_postal_codes.rb", "db/migrate/create_postal_codes.rb"
+  end
 end

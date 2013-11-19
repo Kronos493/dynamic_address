@@ -3,6 +3,7 @@ class CreateAddresses < ActiveRecord::Migration
     create_table :addesses do |t|
       t.integer :addressable_id
       t.integer :addressable_type
+      t.integer :postal_code_id
       t.string :building_number
       t.string :building_name
       t.string :street_name

@@ -5,3 +5,4 @@ module DynamicAddress
 end
 
 require "address"
+require "postal_code"
