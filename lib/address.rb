@@ -6,4 +6,17 @@ class Address < ActiveRecord::Base
   belongs_to :addressable, polymorphic: true
 
   belongs_to :postal_code
+
+
+
+  def fetch_data_from_postal_code
+    if postal_code
+      [:en, :th].each do |x|
+        Globalize.with_locale(x) do
+          self.assign_attributes(postal_code.locality)
+        end
+      end
+      nil
+    end
+  end
 end
