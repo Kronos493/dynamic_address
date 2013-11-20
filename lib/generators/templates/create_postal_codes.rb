@@ -8,6 +8,8 @@ class CreatePostalCodes < ActiveRecord::Migration
       t.timestamps
     end
 
-    PostalCode.create_translation_table! locality: :hstore
+    PostalCode.create_translation_table! locality: :string
+    remove_column :postal_code_translations, :locality
+    add_column :postal_code_translations, :locality, :hstore, after: :locale
   end
 end

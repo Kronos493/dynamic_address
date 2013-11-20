@@ -6,7 +6,16 @@ class AddressGenerator < Rails::Generators::Base
   source_root File.expand_path('../templates', __FILE__)
 
   def self.next_migration_number(path)
-    Time.now.utc.strftime("%Y%m%d%H%M%S")
+    unless @prev_migration_nr
+      @prev_migration_nr = Time.now.utc.strftime("%Y%m%d%H%M%S").to_i
+    else
+      @prev_migration_nr += 1
+    end
+    @prev_migration_nr.to_s
+  end
+
+  def setup_hstore
+    migration_template "setup_hstore.rb", "db/migrate/setup_hstore.rb"
   end
 
   def create_migration_addresses
