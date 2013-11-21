@@ -17,7 +17,7 @@ class AddressGenerator < Rails::Generators::Base
   def seed_settings
     append_to_file 'db/seeds.rb' do
       "\nSetting.available_locales = [:en] if Setting.available_locales.nil?
-      \nSetting.default_locale = [:en] if Setting.default_locale.nil?"
+      Setting.default_locale = :en if Setting.default_locale.nil?"
     end
   end
 
