@@ -14,6 +14,13 @@ class AddressGenerator < Rails::Generators::Base
     @prev_migration_nr.to_s
   end
 
+  def seed_settings
+    append_to_file 'db/seeds.rb' do
+      "\nSetting.available_locales = [:en] if Setting.available_locales.nil?
+      \nSetting.default_locale = [:en] if Setting.default_locale.nil?"
+    end
+  end
+
   def setup_hstore
     migration_template "setup_hstore.rb", "db/migrate/setup_hstore.rb"
   end
@@ -24,5 +31,9 @@ class AddressGenerator < Rails::Generators::Base
 
   def create_migration_postal_codes
     migration_template "create_postal_codes.rb", "db/migrate/create_postal_codes.rb"
+  end
+
+  def create_migration_settings
+    migration_template "create_settings.rb", "db/migrate/create_settings.rb"
   end
 end
