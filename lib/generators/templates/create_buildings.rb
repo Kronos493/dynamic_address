@@ -5,6 +5,6 @@ class CreateBuildings < ActiveRecord::Migration
       t.timestamps
     end
 
-    Address.create_translation_table! name: :string
+    Building.create_translation_table! name: :string
   end
 end
