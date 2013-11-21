@@ -13,3 +13,4 @@ require 'rails-settings-cached'
 require "address"
 require "postal_code"
 require "setting"
+require "building"
