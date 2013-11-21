@@ -11,7 +11,7 @@ class Address < ActiveRecord::Base
 
   def fetch_data_from_postal_code
     if postal_code
-      [:en, :th].each do |x|
+      Setting.available_locales.each do |x|
         Globalize.with_locale(x) do
           self.assign_attributes(postal_code.locality)
         end
