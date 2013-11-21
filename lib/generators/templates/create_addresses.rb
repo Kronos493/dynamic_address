@@ -3,6 +3,8 @@ class CreateAddresses < ActiveRecord::Migration
     create_table :addresses do |t|
       t.integer :addressable_id
       t.string :addressable_type
+      t.integer :buildingable_id
+      t.integer :buildingable_type
       t.integer :postal_code_id
       t.string :building_number
       t.string :building_name
@@ -19,6 +21,7 @@ class CreateAddresses < ActiveRecord::Migration
     end
 
     add_index :addresses, [:addressable_id, :addressable_type]
+    add_index :addresses, [:buildingable_id, :buildingable_type]
 
     Address.create_translation_table! building_name: :string, street_name: :string, 
     street_name: :string, province_name: :string, district_name: :string, sub_district_name: :string,

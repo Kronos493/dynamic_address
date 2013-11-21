@@ -4,6 +4,7 @@ class Address < ActiveRecord::Base
     :extra_info
 
   belongs_to :addressable, polymorphic: true
+  belongs_to :buildingable, polymorphic: true
 
   belongs_to :postal_code
 
