@@ -18,6 +18,8 @@ class CreateAddresses < ActiveRecord::Migration
       t.timestamps
     end
 
+    add_index :addresses, [:addressable_id, :addressable_type]
+
     Address.create_translation_table! building_name: :string, street_name: :string, 
     street_name: :string, province_name: :string, district_name: :string, sub_district_name: :string,
     extra_info: :text
