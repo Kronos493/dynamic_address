@@ -21,9 +21,9 @@ class Address < ActiveRecord::Base
   end
 
   def dynamic_validation
-    if Setting.try("#{addressable_type}_address").present?
-      Setting.try("#{addressable_type}_address").each do |key, value|
-        errors.add(key, t('errors.messages.blank')) if value && try(key).blank?
+    if Setting["#{addressable_type.tableize}_address"].present?
+      Setting["#{addressable_type.tableize}_address"].each do |key, value|
+        errors.add(key, I18n.t('errors.messages.blank')) if value && try(key).blank?
       end
     end
   end
