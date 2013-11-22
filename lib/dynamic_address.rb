@@ -11,7 +11,7 @@ require 'rails-settings-cached'
 require 'rails-api'
 
 
-require "address"
-require "postal_code"
-require "setting"
-require "building"
+require "dynamic_address/address"
+require "dynamic_address/postal_code"
+require "dynamic_address/setting"
+require "dynamic_address/building"
