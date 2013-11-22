@@ -8,6 +8,7 @@ end
 require 'globalize'
 require 'pg'
 require 'rails-settings-cached'
+require 'rails-api'
 
 
 require "address"
