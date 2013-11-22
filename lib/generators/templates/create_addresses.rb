@@ -4,7 +4,7 @@ class CreateAddresses < ActiveRecord::Migration
       t.integer :addressable_id
       t.string :addressable_type
       t.integer :buildingable_id
-      t.integer :buildingable_type
+      t.string :buildingable_type
       t.integer :postal_code_id
       t.string :building_number
       t.string :building_name
