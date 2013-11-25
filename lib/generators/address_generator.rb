@@ -33,10 +33,6 @@ class AddressGenerator < Rails::Generators::Base
     migration_template "create_postal_codes.rb", "db/migrate/create_postal_codes.rb"
   end
 
-  def create_migration_buildings
-    migration_template "create_buildings.rb", "db/migrate/create_buildings.rb"
-  end
-
   def create_migration_settings
     migration_template "create_settings.rb", "db/migrate/create_settings.rb"
   end
