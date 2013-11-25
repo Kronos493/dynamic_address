@@ -9,6 +9,7 @@ class CreateAddresses < ActiveRecord::Migration
       t.string :building_number
       t.string :building_name
       t.string :street_name
+      t.string :road
       t.string :floor
       t.string :province_name
       t.string  :district_name
@@ -24,7 +25,7 @@ class CreateAddresses < ActiveRecord::Migration
     add_index :addresses, [:buildingable_id, :buildingable_type]
 
     Address.create_translation_table! building_name: :string, street_name: :string, 
-    street_name: :string, province_name: :string, district_name: :string, sub_district_name: :string,
+    street_name: :string, road: :string, province_name: :string, district_name: :string, sub_district_name: :string,
     extra_info: :text
   end
 end
