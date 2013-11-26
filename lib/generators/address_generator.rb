@@ -21,16 +21,8 @@ class AddressGenerator < Rails::Generators::Base
     end
   end
 
-  def setup_hstore
-    migration_template "setup_hstore.rb", "db/migrate/setup_hstore.rb"
-  end
-
   def create_migration_addresses
     migration_template "create_addresses.rb", "db/migrate/create_addresses.rb"
-  end
-
-  def create_migration_postal_codes
-    migration_template "create_postal_codes.rb", "db/migrate/create_postal_codes.rb"
   end
 
   def create_migration_settings
