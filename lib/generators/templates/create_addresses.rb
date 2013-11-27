@@ -1,5 +1,5 @@
 class CreateAddresses < ActiveRecord::Migration
-  def change
+  def up
     create_table :addresses do |t|
       t.integer :addressable_id
       t.string :addressable_type
@@ -21,5 +21,10 @@ class CreateAddresses < ActiveRecord::Migration
     Address.create_translation_table! building_name: :string, street_name: :string,
     road: :string, province_name: :string, district_name: :string, sub_district_name: :string,
     extra_info: :text
+  end
+
+  def down
+    drop_table :addresses
+    Address.drop_translation_table!
   end
 end
