@@ -7,6 +7,9 @@ class Address < ActiveRecord::Base
 
   belongs_to :addressable, polymorphic: true
   belongs_to :buildingable, polymorphic: true
+  belongs_to :address_type
+
+  belongs_to :contact_number
 
   validate :dynamic_validation
 

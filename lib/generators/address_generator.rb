@@ -25,7 +25,15 @@ class AddressGenerator < Rails::Generators::Base
     migration_template "create_addresses.rb", "db/migrate/create_addresses.rb"
   end
 
+  def create_migration_address_types
+    migration_template "create_address_types.rb", "db/migrate/create_address_types.rb"
+  end
+
   def create_migration_settings
     migration_template "create_settings.rb", "db/migrate/create_settings.rb"
+  end
+
+  def create_migration_contact_numbers
+    migration_template "create_contact_numbers.rb", "db/migrate/create_contact_numbers.rb"
   end
 end
