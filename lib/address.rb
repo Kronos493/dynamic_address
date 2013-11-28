@@ -8,8 +8,6 @@ class Address < ActiveRecord::Base
   belongs_to :addressable, polymorphic: true
   belongs_to :buildingable, polymorphic: true
 
-  belongs_to :postal_code
-
   validate :dynamic_validation
 
   # def fetch_data_from_postal_code
