@@ -1,4 +1,4 @@
-class CreateContactNumber < ActiveRecord::Migration
+class CreateContactNumbers < ActiveRecord::Migration
   def change
     create_table :contact_numbers do |t|
       t.integer :contactable_id
@@ -9,6 +9,6 @@ class CreateContactNumber < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :addresses, [:contactable_id, :contactable_type]
+    add_index :contact_numbers, [:contactable_id, :contactable_type]
   end
 end
