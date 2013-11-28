@@ -13,3 +13,4 @@ require 'rails-settings-cached'
 require "address"
 require "setting"
 require "contact_number"
+require "address_type"
