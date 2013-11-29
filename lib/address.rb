@@ -3,8 +3,6 @@ class Address < ActiveRecord::Base
     :road, :province_name, :district_name, :sub_district_name,
     :extra_info
 
-  validates :addressable, presence: true
-
   belongs_to :addressable, polymorphic: true
   belongs_to :buildingable, polymorphic: true
   belongs_to :address_type
