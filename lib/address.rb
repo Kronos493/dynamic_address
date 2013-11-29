@@ -1,7 +1,7 @@
 class Address < ActiveRecord::Base
   translates :building_name, :street_name, 
     :road, :province_name, :district_name, :sub_district_name,
-    :extra_info
+    :extra_info, :city_name
 
   belongs_to :addressable, polymorphic: true
   belongs_to :buildingable, polymorphic: true
