@@ -13,6 +13,10 @@ class AddressGenerator < Rails::Generators::Base
     end
     @prev_migration_nr.to_s
   end
+
+  def create_migration_reference_to_address_types
+    migration_template "add_reference_to_address_types.rb", "db/migrate/add_reference_to_address_types.rb"
+  end
   
   def create_migration_is_main_to_contact_number
     migration_template "add_is_main_to_contact_numbers.rb", "db/migrate/add_is_main_to_contact_numbers.rb"
