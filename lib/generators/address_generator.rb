@@ -14,10 +14,6 @@ class AddressGenerator < Rails::Generators::Base
     @prev_migration_nr.to_s
   end
 
-  def create_migration_remove_contact_type_from_contact_numbers
-    migration_template "remove_field_contact_type_from_contact_numbers.rb", "db/migrate/remove_field_contact_type_from_contact_numbers.rb"
-  end
-
   def create_migration_city_name_to_address
     migration_template "add_city_name_to_address_translations.rb", "db/migrate/add_city_name_to_address_translations.rb"
   end
