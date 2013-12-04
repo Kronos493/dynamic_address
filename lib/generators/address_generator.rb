@@ -14,6 +14,10 @@ class AddressGenerator < Rails::Generators::Base
     @prev_migration_nr.to_s
   end
 
+  def create_migration_state_name_to_address
+    migration_template "add_state_name_to_address_translations.rb", "db/migrate/add_state_name_to_address_translations.rb"
+  end
+
   def create_migration_reference_to_address_types
     migration_template "add_reference_to_address_types.rb", "db/migrate/add_reference_to_address_types.rb"
   end
