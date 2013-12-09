@@ -1,7 +1,7 @@
 require "dynamic_address/version"
 
 module DynamicAddress
-  # Your code goes here...
+  autoload :Views,                    'dynamic_address/views'
 end
 
 
@@ -15,3 +15,5 @@ require "dynamic_address/address"
 require "dynamic_address/postal_code"
 require "dynamic_address/setting"
 require "dynamic_address/building"
+ 
+
