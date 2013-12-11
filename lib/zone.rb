@@ -1,5 +1,5 @@
 class Zone < ActiveRecord::Base
   translates :name
   has_many :postal_codes
-  validates :name
+  validates :name, presence: true
 end
