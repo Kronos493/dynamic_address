@@ -14,6 +14,10 @@ class AddressGenerator < Rails::Generators::Base
     @prev_migration_nr.to_s
   end
 
+  def create_migration_is_main_to_address
+    migration_template "add_is_main_to_addresses.rb", "db/migrate/add_is_main_to_addresses.rb"
+  end
+
   def create_migration_zones
     migration_template "create_zones.rb", "db/migrate/create_zones.rb"
   end
