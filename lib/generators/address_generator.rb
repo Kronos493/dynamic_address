@@ -14,6 +14,10 @@ class AddressGenerator < Rails::Generators::Base
     @prev_migration_nr.to_s
   end
 
+  def create_migration_variables_to_zone
+     migration_template "add_variables_to_zones.rb", "db/migrate/add_variables_to_zones.rb"
+  end
+
   def create_migration_is_main_to_address
     migration_template "add_is_main_to_addresses.rb", "db/migrate/add_is_main_to_addresses.rb"
   end
@@ -24,6 +28,10 @@ class AddressGenerator < Rails::Generators::Base
 
   def create_migration_postal_codes
     migration_template "create_postal_codes.rb", "db/migrate/create_postal_codes.rb"
+  end
+
+  def create_migration_zip_code_column_type
+     migration_template "change_zip_code_column_type.rb", "db/migrate/change_zip_code_column_type.rb"
   end
 
   def create_migration_zone_id_to_postal_code
