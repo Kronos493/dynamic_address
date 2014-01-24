@@ -5,11 +5,15 @@ class Zone < ActiveRecord::Base
 
   extend HstoreValidation
 
-  validates_hstore :variables, true do
-    validates "level", presence: true if Setting.delivery_calculator == "Calculator::Charges::Level"
+  validates_hstore :variables, :condition do
+    validates "level", presence: true
   end
 
   def variables
     super || {}
+  end
+
+  def condition
+    Setting.delivery_calculator == "Calculator::Charges::Level"
   end
 end
