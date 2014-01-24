@@ -7,6 +7,7 @@ class Zone < ActiveRecord::Base
 
   validates_hstore :variables, :condition do
     validates "level", presence: true
+    validates "area", presence: true
   end
 
   def variables
