@@ -11,7 +11,7 @@ class Zone < ActiveRecord::Base
   end
 
   def variables
-    super || {}
+    read_attribute(:variables) || {}
   end
 
   def condition
