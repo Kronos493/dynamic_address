@@ -39,7 +39,6 @@ class Address < ActiveRecord::Base
       Setting["#{addressable_type.downcase}_address"].each do |key, value|
         if value && try(key).blank? && try(key) != false
           errors.add(key, I18n.t('errors.messages.blank'))
-          addressable.errors.add(key, I18n.t('errors.messages.blank'))
         end
       end
     end
@@ -47,7 +46,6 @@ class Address < ActiveRecord::Base
       Setting["#{address_type.reference.downcase}_address"].each do |key, value|
         if value && try(key).blank? && try(key) != false
           errors.add(key, I18n.t('errors.messages.blank')) 
-          addressable.errors.add(key, I18n.t('errors.messages.blank'))
         end
       end
     end
