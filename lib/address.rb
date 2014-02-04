@@ -32,17 +32,23 @@ class Address < ActiveRecord::Base
   #       block_building_attributes.include?(key) || value.blank?
   #     end
   #   end
-  # end
+  # endSetting[s.reload]
 
   def dynamic_validation
     if Setting["#{addressable_type.downcase}_address"].present?
       Setting["#{addressable_type.downcase}_address"].each do |key, value|
-        errors.add(key, I18n.t('errors.messages.blank')) if value && try(key).blank? && try(key) != false
+        if value && try(key).blank? && try(key) != false
+          errors.add(key, I18n.t('errors.messages.blank'))
+          addressable.errors.add(key, I18n.t('errors.messages.blank'))
+        end
       end
     end
     if address_type.present? && Setting["#{address_type.reference.downcase}_address"].present?
       Setting["#{address_type.reference.downcase}_address"].each do |key, value|
-        errors.add(key, I18n.t('errors.messages.blank')) if value && try(key).blank? && try(key) != false
+        if value && try(key).blank? && try(key) != false
+          errors.add(key, I18n.t('errors.messages.blank')) 
+          addressable.errors.add(key, I18n.t('errors.messages.blank'))
+        end
       end
     end
   end
