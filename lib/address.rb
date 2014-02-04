@@ -35,9 +35,14 @@ class Address < ActiveRecord::Base
   # end
 
   def dynamic_validation
-    if Setting["#{addressable_type.tableize}_address"].present?
-      Setting["#{addressable_type.tableize}_address"].each do |key, value|
-        errors.add(key, I18n.t('errors.messages.blank')) if value && try(key).blank?
+    if Setting["#{addressable_type.downcase}_address"].present?
+      Setting["#{addressable_type.downcase}_address"].each do |key, value|
+        errors.add(key, I18n.t('errors.messages.blank')) if value && try(key).blank? && try(key) != false
+      end
+    end
+    if address_type.present? && Setting["#{address_type.reference.downcase}_address"].present?
+      Setting["#{address_type.reference.downcase}_address"].each do |key, value|
+        errors.add(key, I18n.t('errors.messages.blank')) if value && try(key).blank? && try(key) != false
       end
     end
   end
