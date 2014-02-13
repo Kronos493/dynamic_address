@@ -3,6 +3,10 @@ class Zone < ActiveRecord::Base
   has_many :postal_codes
   validates :name, presence: true
 
+  ransacker :area do |parent|    
+    Arel::Nodes::InfixOperation.new('->', parent.table[:variables], 'area')
+  end
+
   extend HstoreValidation
 
   validates_hstore :variables, :condition do
