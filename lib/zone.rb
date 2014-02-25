@@ -1,4 +1,6 @@
 class Zone < ActiveRecord::Base
+  default_scope -> { joins(:translations).includes(:translations) }
+  
   translates :name
   has_many :postal_codes
   validates :name, presence: true
