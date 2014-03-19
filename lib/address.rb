@@ -1,5 +1,5 @@
 class Address < ActiveRecord::Base
-  default_scope -> { joins(:translations).includes(:translations) }
+  default_scope -> { includes(:translations).references(:translations) }
 
   translates :building_name, :street_name, 
     :road, :province_name, :district_name, :sub_district_name,

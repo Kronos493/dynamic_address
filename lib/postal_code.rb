@@ -1,5 +1,5 @@
 class PostalCode < ActiveRecord::Base
-  default_scope -> { joins(:translations).includes(:translations) } 
+  default_scope -> { includes(:translations).references(:translations) } 
   
   translates :locality
   store_accessor :locality

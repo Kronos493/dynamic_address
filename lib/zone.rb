@@ -1,5 +1,5 @@
 class Zone < ActiveRecord::Base
-  default_scope -> { joins(:translations).includes(:translations) }
+  default_scope -> { includes(:translations).references(:translations) }
   
   translates :name
   has_many :postal_codes
