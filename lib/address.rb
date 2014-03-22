@@ -1,7 +1,7 @@
 class Address < ActiveRecord::Base
   default_scope -> { includes(:translations).references(:translations) }
 
-  translates :building_name, :street_name, 
+  translates :building_name, :street_name,
     :road, :province_name, :district_name, :sub_district_name,
     :extra_info, :city_name, :state_name, :company_name
 
@@ -13,28 +13,14 @@ class Address < ActiveRecord::Base
 
   validate :dynamic_validation
 
-  # def fetch_data_from_postal_code
-  #   if postal_code
-  #     Setting.available_locales.each do |lang|
-  #       Globalize.with_locale(lang) do
-  #         self.assign_attributes(postal_code.locality)
-  #       end
-  #     end
-  #     nil
-  #   end
-  # end
-
-  # def fetch_data_from_building
-  #   if buildingable
-  #     block_building_attributes = %w[id buildingable_id buildingable_type
-  #                                   addressable_id addressable_type
-  #                                   created_at updated_at]
-  #     building_address_attributes = buildingable.addresss.attributes
-  #     building_address_attributes.delete_if do |key,value|
-  #       block_building_attributes.include?(key) || value.blank?
-  #     end
-  #   end
-  # endSetting[s.reload]
+  def zone
+    __zone = nil
+    __postal_code = PostalCode.where(zip_code: postal_code).first
+    if __postal_code.present?
+      __zone = __postal_code.zone
+    end
+    __zone
+  end
 
   def dynamic_validation
     if Setting["#{addressable_type.downcase}_address"].present?
@@ -47,7 +33,7 @@ class Address < ActiveRecord::Base
     if address_type.present? && Setting["#{address_type.reference.downcase}_address"].present?
       Setting["#{address_type.reference.downcase}_address"].each do |key, value|
         if value && try(key).blank? && try(key) != false
-          errors.add(key, I18n.t('errors.messages.blank')) 
+          errors.add(key, I18n.t('errors.messages.blank'))
         end
       end
     end
