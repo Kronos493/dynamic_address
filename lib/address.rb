@@ -13,6 +13,20 @@ class Address < ActiveRecord::Base
 
   validate :dynamic_validation
 
+  def display_address_text
+    eval Setting.display_address_text
+  end
+
+  def self.display_address_text(hash)
+    condition_text = Setting.display_address_text
+    Setting.display_address_text.scan( /(\w+)/ ).each do |match_text|
+      text = match_text.first
+      puts text
+      condition_text.gsub! text, "hash['#{text}']"
+    end
+     eval condition_text
+  end
+
   def zone
     __zone = nil
     __postal_code = PostalCode.where(zip_code: postal_code).first
