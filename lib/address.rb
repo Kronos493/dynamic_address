@@ -18,6 +18,7 @@ class Address < ActiveRecord::Base
   end
 
   def self.display_address_text(hash)
+    return if hash.blank?
     condition_text = Setting.display_address_text
     Setting.display_address_text.scan( /(\w+)/ ).each do |match_text|
       text = match_text.first
