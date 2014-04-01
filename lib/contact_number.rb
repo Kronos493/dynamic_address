@@ -3,7 +3,7 @@ class ContactNumber < ActiveRecord::Base
   CONTACT_TYPE = %w[mobile landline fax]
   validates :contact_type, inclusion: { :in => CONTACT_TYPE }
   validates :number, presence: true
-
+  validate :number_should_be_correct
 
   CONTACT_TYPE.each do |contact_type|
     scope contact_type, -> { where(contact_type: contact_type) }
@@ -11,5 +11,11 @@ class ContactNumber < ActiveRecord::Base
 
   def self.main_number
     where(is_main: true).first
+  end
+
+  def number_should_be_correct
+    if number.present? && (number =~ /^(?:\+?\d{2})?\d{8,10}$/).blank?
+      errors[:number] << "is invalid"
+    end
   end
 end
