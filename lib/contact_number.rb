@@ -1,6 +1,6 @@
 class ContactNumber < ActiveRecord::Base
   belongs_to :contactable, polymorphic: true
-  CONTACT_TYPE = %w[mobile landline fax]
+  CONTACT_TYPE = %w[mobile landline fax1 fax2 fax3 ]
   validates :contact_type, inclusion: { :in => CONTACT_TYPE }
   validates :number, presence: true
   validate :number_should_be_correct
