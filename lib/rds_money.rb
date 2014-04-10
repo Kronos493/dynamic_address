@@ -2,10 +2,10 @@ module RdsMoney
   extend ActiveSupport::Concern
 
   def display_money(amount)
-    "#{currency}#{display_amount(amount)}"
+    "#{currency}#{parse_money(amount)}"
   end
 
-  def display_amount(amount)
+  def parse_money(amount)
     amount ||= 0
     sprintf "%.2f", amount
   end
