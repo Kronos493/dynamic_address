@@ -18,7 +18,7 @@ module RdsMoney
     def define_display_money!(*args)
       args.each do |arg|
         define_method("display_#{arg}") do
-          display_money(self[arg])
+          display_money( self.send(arg) )
         end
       end
     end
