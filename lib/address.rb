@@ -11,6 +11,9 @@ class Address < ActiveRecord::Base
 
   belongs_to :contact_number
 
+  has_one :code, foreign_key: "zip_code", class_name: "PostalCode", primary_key: "postal_code"
+  has_one :zone, through: :code
+
   validate :dynamic_validation
 
   def display_address_text
@@ -26,15 +29,6 @@ class Address < ActiveRecord::Base
       condition_text.gsub! text, "hash['#{text}']"
     end
      eval condition_text
-  end
-
-  def zone
-    __zone = nil
-    __postal_code = PostalCode.where(zip_code: postal_code).first
-    if __postal_code.present?
-      __zone = __postal_code.zone
-    end
-    __zone
   end
 
   def dynamic_validation
